@@ -1,248 +1,623 @@
-export default function CMDLandingPage() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white font-sans">
-      {/* HERO */}
-      <section className="px-6 py-12 lg:px-20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <div className="inline-block px-4 py-2 rounded-full bg-blue-600/20 border border-blue-500 text-blue-300 text-sm mb-5">
-              CMD • Chan Whira Digital
-            </div>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CMD - Chan Whira Digital</title>
 
-            <h1 className="text-5xl lg:text-7xl font-black leading-tight">
-              Jasa
-              <span className="text-blue-400"> Pembuatan Website </span>
-              & Digital Marketing
-            </h1>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-            <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-2xl">
-              CMD membantu bisnis Anda tampil profesional di internet melalui
-              website modern, SEO Google, landing page, dan strategi digital
-              marketing yang efektif.
-            </p>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="https://wa.me/6285773065313"
-                className="bg-blue-600 hover:bg-blue-700 transition px-7 py-4 rounded-2xl font-bold shadow-2xl"
-              >
-                Konsultasi Gratis
-              </a>
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
 
-              <a
-                href="#layanan"
-                className="border border-slate-500 hover:border-blue-400 px-7 py-4 rounded-2xl font-semibold"
-              >
-                Lihat Layanan
-              </a>
-            </div>
+    a{
+      text-decoration:none;
+    }
 
-            <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                'Website Modern',
-                'SEO Friendly',
-                'Digital Marketing',
-                'Support Gratis',
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white/5 border border-white/10 rounded-2xl p-4 text-center text-sm"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </div>
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
 
-          <div className="relative">
-            <div className="absolute inset-0 bg-blue-500 blur-3xl opacity-20 rounded-full"></div>
-            <div className="relative bg-slate-900 border border-blue-500/30 rounded-[30px] p-6 shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"
-                alt="CMD Website"
-                className="rounded-2xl w-full h-[450px] object-cover"
-              />
-            </div>
-          </div>
+    header{
+      padding:20px 0;
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(0,0,0,0.6);
+      backdrop-filter:blur(10px);
+    }
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:900;
+    }
+
+    .logo span{
+      color:#2d8cff;
+    }
+
+    .menu a{
+      margin-left:25px;
+      color:white;
+      font-weight:500;
+      transition:0.3s;
+    }
+
+    .menu a:hover{
+      color:#2d8cff;
+    }
+
+    .hero{
+      padding:100px 0;
+      background:linear-gradient(135deg,#050816,#071c4d,#0b1020);
+    }
+
+    .hero-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:center;
+      gap:50px;
+    }
+
+    .hero h1{
+      font-size:65px;
+      line-height:1.1;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .hero h1 span{
+      color:#2d8cff;
+    }
+
+    .hero p{
+      color:#cbd5e1;
+      font-size:18px;
+      line-height:1.8;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 35px;
+      border-radius:15px;
+      background:#2d8cff;
+      color:white;
+      font-weight:700;
+      transition:0.3s;
+      box-shadow:0 10px 30px rgba(45,140,255,0.4);
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      background:#1b6fe0;
+    }
+
+    .hero-img img{
+      width:100%;
+      border-radius:30px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .services{
+      padding:100px 0;
+      background:#09101f;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:50px;
+      font-weight:900;
+    }
+
+    .title span{
+      color:#2d8cff;
+    }
+
+    .title p{
+      margin-top:15px;
+      color:#cbd5e1;
+    }
+
+    .service-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .card{
+      background:#111827;
+      padding:35px;
+      border-radius:25px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#2d8cff;
+    }
+
+    .icon{
+      width:70px;
+      height:70px;
+      background:#2d8cff;
+      border-radius:20px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      margin-bottom:15px;
+      font-size:25px;
+    }
+
+    .card p{
+      color:#cbd5e1;
+      line-height:1.8;
+    }
+
+    .pricing{
+      padding:100px 0;
+      background:linear-gradient(135deg,#0a1020,#071c4d);
+    }
+
+    .price-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      margin-top:60px;
+    }
+
+    .price-card{
+      background:white;
+      color:#111827;
+      border-radius:30px;
+      padding:40px;
+      text-align:center;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .price-card.dark{
+      background:#111827;
+      color:white;
+      border:2px solid #2d8cff;
+    }
+
+    .price-card h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .price{
+      font-size:60px;
+      font-weight:900;
+      margin:20px 0;
+      color:#2d8cff;
+    }
+
+    .price-card ul{
+      list-style:none;
+      text-align:left;
+      margin-top:20px;
+    }
+
+    .price-card ul li{
+      margin-bottom:15px;
+      font-size:17px;
+    }
+
+    .cta{
+      padding:100px 0;
+      text-align:center;
+    }
+
+    .cta-box{
+      background:linear-gradient(135deg,#111827,#071c4d);
+      padding:70px 30px;
+      border-radius:40px;
+      border:1px solid rgba(45,140,255,0.3);
+    }
+
+    .cta-box h2{
+      font-size:55px;
+      margin-bottom:20px;
+      font-weight:900;
+    }
+
+    .cta-box h2 span{
+      color:#2d8cff;
+    }
+
+    .cta-box p{
+      color:#cbd5e1;
+      max-width:700px;
+      margin:auto;
+      margin-bottom:35px;
+      line-height:1.8;
+    }
+
+    footer{
+      padding:40px 0;
+      border-top:1px solid rgba(255,255,255,0.08);
+      text-align:center;
+      color:#cbd5e1;
+    }
+
+    footer h3{
+      font-size:28px;
+      margin-bottom:15px;
+    }
+
+    footer h3 span{
+      color:#2d8cff;
+    }
+
+    @media(max-width:900px){
+      .hero-wrap{
+        grid-template-columns:1fr;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .title h2{
+        font-size:40px;
+      }
+
+      .cta-box h2{
+        font-size:40px;
+      }
+
+      .menu{
+        display:none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">CMD <span>Digital</span></div>
+
+        <div class="menu">
+          <a href="#home">Home</a>
+          <a href="#layanan">Layanan</a>
+          <a href="#paket">Paket</a>
+          <a href="#kontak">Kontak</a>
         </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="layanan" className="px-6 py-20 lg:px-20 bg-black/20">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-black">
-            Layanan <span className="text-blue-400">CMD</span>
-          </h2>
-
-          <p className="text-slate-300 mt-4 max-w-3xl mx-auto text-lg">
-            Solusi lengkap untuk kebutuhan website dan pemasaran digital bisnis
-            Anda.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-            {[
-              {
-                title: 'Pembuatan Website',
-                desc: 'Website company profile, toko online, landing page, dan custom website.',
-              },
-              {
-                title: 'SEO Google',
-                desc: 'Optimasi website agar lebih mudah ditemukan di Google.',
-              },
-              {
-                title: 'Digital Marketing',
-                desc: 'Promosi bisnis melalui Google Ads & media sosial.',
-              },
-              {
-                title: 'Domain & Hosting',
-                desc: 'Domain .COM, .ID, .BIZ.ID dan hosting cepat & aman.',
-              },
-            ].map((service, i) => (
-              <div
-                key={i}
-                className="bg-white/5 border border-white/10 hover:border-blue-500 transition rounded-3xl p-8 text-left"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-2xl mb-5">
-                  🚀
-                </div>
-
-                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  {service.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PACKAGE */}
-      <section className="px-6 py-20 lg:px-20">
-        <div className="max-w-6xl mx-auto bg-gradient-to-r from-blue-700 to-blue-500 rounded-[40px] p-10 shadow-2xl text-center">
-          <h2 className="text-4xl lg:text-5xl font-black">
-            Paket Hemat CMD
-          </h2>
-
-          <p className="mt-4 text-lg text-blue-100">
-            Cocok untuk UMKM, bisnis online, dan jasa.
-          </p>
-
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
-            <div className="bg-white text-slate-900 rounded-3xl p-8 shadow-2xl">
-              <div className="text-sm font-bold text-blue-600 mb-2">
-                PAKET BIZ.ID
-              </div>
-
-              <h3 className="text-5xl font-black mb-4">300K</h3>
-
-              <ul className="space-y-3 text-left text-lg">
-                <li>✅ Domain .BIZ.ID</li>
-                <li>✅ Free Landing Page</li>
-                <li>✅ Gratis Iklan 5 Website</li>
-                <li>✅ Optimasi SEO 1 Minggu</li>
-                <li>✅ Support Gratis</li>
-              </ul>
-            </div>
-
-            <div className="bg-slate-950 border border-blue-300 rounded-3xl p-8 shadow-2xl">
-              <div className="text-sm font-bold text-blue-300 mb-2">
-                PAKET .COM
-              </div>
-
-              <h3 className="text-5xl font-black mb-4">500K</h3>
-
-              <ul className="space-y-3 text-left text-lg text-slate-200">
-                <li>✅ Domain .COM Premium</li>
-                <li>✅ Free Landing Page</li>
-                <li>✅ Iklan 10 Website</li>
-                <li>✅ Setting SEO Page One</li>
-                <li>✅ Optimasi 1 Minggu</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE */}
-      <section className="px-6 py-20 lg:px-20 bg-black/20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <img
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1200&auto=format&fit=crop"
-              alt="CMD Team"
-              className="rounded-[30px] shadow-2xl"
-            />
-          </div>
-
-          <div>
-            <h2 className="text-4xl lg:text-5xl font-black leading-tight">
-              Kenapa Pilih
-              <span className="text-blue-400"> CMD?</span>
-            </h2>
-
-            <div className="mt-10 space-y-6">
-              {[
-                'Desain modern & profesional',
-                'Website cepat & SEO Friendly',
-                'Harga terjangkau untuk UMKM',
-                'Support & konsultasi gratis',
-                'Melayani seluruh Indonesia',
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-5"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-xl">
-                    ✔
-                  </div>
-                  <div className="text-lg">{item}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="px-6 py-20 lg:px-20 text-center">
-        <div className="max-w-5xl mx-auto bg-gradient-to-r from-slate-900 to-blue-950 border border-blue-500/30 rounded-[40px] p-12 shadow-2xl">
-          <h2 className="text-4xl lg:text-6xl font-black leading-tight">
-            Siap Membuat Bisnis Anda
-            <span className="text-blue-400"> Go Digital?</span>
-          </h2>
-
-          <p className="mt-6 text-lg text-slate-300 max-w-2xl mx-auto">
-            Konsultasikan kebutuhan website dan digital marketing Anda bersama CMD sekarang juga.
-          </p>
-
-          <a
-            href="https://wa.me/6285773065313"
-            className="inline-block mt-8 bg-blue-600 hover:bg-blue-700 transition px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl"
-          >
-            Hubungi Sekarang
-          </a>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 px-6 py-10 lg:px-20 text-slate-400">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-6">
-          <div>
-            <div className="text-2xl font-black text-white">
-              CMD <span className="text-blue-400">Chan Whira Digital</span>
-            </div>
-            <p className="mt-3 max-w-xl">
-              Solusi website dan digital marketing profesional untuk bisnis modern.
-            </p>
-          </div>
-
-          <div>
-            <div>📞 0857-7306-5313</div>
-            <div>🌐 www.chanwhiradigital.com</div>
-            <div>📍 Melayani Seluruh Indonesia</div>
-          </div>
-        </div>
-      </footer>
+      </nav>
     </div>
-  )
-}
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-wrap">
+      <div>
+        <h1>
+          Jasa <span>Pembuatan Website</span><br>
+          & Digital Marketing
+        </h1>
+
+        <p>
+          CMD (Chan Whira Digital) membantu bisnis Anda berkembang melalui website profesional, SEO Google, landing page modern, dan strategi digital marketing yang efektif.
+        </p>
+
+        <a href="https://wa.me/6285773065313" class="btn">
+          Konsultasi Gratis
+        </a>
+      </div>
+
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="CMD">
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="layanan">
+    <div class="container">
+
+      <div class="title">
+        <h2>Layanan <span>CMD</span></h2>
+        <p>Solusi lengkap website & digital marketing untuk bisnis modern.</p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="card">
+          <div class="icon">🌐</div>
+          <h3>Pembuatan Website</h3>
+          <p>
+            Website company profile, toko online, landing page, dan custom website modern.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>SEO Google</h3>
+          <p>
+            Optimasi website agar lebih mudah ditemukan dan tampil di Google.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📈</div>
+          <h3>Digital Marketing</h3>
+          <p>
+            Promosi bisnis melalui Google Ads, media sosial, dan strategi marketing.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💻</div>
+          <h3>Domain & Hosting</h3>
+          <p>
+            Domain .COM, .ID, .BIZ.ID dan hosting cepat & aman untuk bisnis Anda.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="paket">
+    <div class="container">
+
+      <div class="title">
+        <h2>Paket <span>CMD</span></h2>
+        <p>Pilih paket sesuai kebutuhan bisnis Anda.</p>
+      </div>
+
+      <div class="price-grid">
+
+        <div class="price-card">
+          <h3>Paket .BIZ.ID</h3>
+          <div class="price">300K</div>
+
+          <ul>
+            <li>✅ Domain .BIZ.ID</li>
+            <li>✅ Free Landing Page</li>
+            <li>✅ Gratis Iklan 5 Website</li>
+            <li>✅ Optimasi SEO 1 Minggu</li>
+            <li>✅ Support Gratis</li>
+          </ul>
+        </div>
+
+        <div class="price-card dark">
+          <h3>Paket .COM</h3>
+          <div class="price">500K</div>
+
+          <ul>
+            <li>✅ Domain .COM Premium</li>
+            <li>✅ Free Landing Page</li>
+            <li>✅ Gratis Iklan 10 Website</li>
+            <li>✅ Setting SEO Page One</li>
+            <li>✅ Optimasi 1 Minggu</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <h2>
+          Siap Membuat Bisnis Anda
+          <span>Go Digital?</span>
+        </h2>
+
+        <p>
+          Konsultasikan kebutuhan website dan digital marketing Anda bersama CMD sekarang juga.
+        </p>
+
+        <a href="https://wa.me/6285773065313" class="btn">
+          Hubungi Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="kontak">
+    <div class="container">
+      <h3>CMD <span>Chan Whira Digital</span></h3>
+
+      <p>📞 0857-7306-5313</p>
+      <p>🌐 www.chanwhiradigital.com</p>
+      <p>📍 Melayani Seluruh Indonesia</p>
+    </div>
+  </footer>
+
+
+
+  <!-- VISI MISI -->
+  <section class="services">
+    <div class="container">
+      <div class="title">
+        <h2>Visi & <span>Misi</span></h2>
+        <p>CMD hadir untuk membantu bisnis berkembang di era digital.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Visi CMD</h3>
+          <p>
+            Menjadi solusi digital terpercaya di Indonesia dalam bidang pembuatan website dan digital marketing untuk membantu bisnis berkembang lebih cepat.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h3>Misi CMD</h3>
+          <p>
+            Memberikan layanan website profesional, SEO Google, dan strategi marketing modern dengan harga terjangkau untuk UMKM dan perusahaan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER -->
+  <section class="pricing">
+    <div class="container">
+      <div class="cta-box">
+        <h2>
+          Website Profesional + SEO + Digital Marketing
+        </h2>
+
+        <p>
+          CMD membantu bisnis Anda tampil profesional di internet dengan desain modern, optimasi Google, dan strategi marketing yang tepat sasaran.
+        </p>
+
+        <a href="https://wa.me/6285773065313" class="btn">
+          Mulai Sekarang
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERI -->
+  <section class="services">
+    <div class="container">
+      <div class="title">
+        <h2>Kenapa Harus <span>CMD?</span></h2>
+        <p>Solusi lengkap digital bisnis Anda.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="card">
+          <div class="icon">⚡</div>
+          <h3>Website Modern</h3>
+          <p>
+            Desain profesional, cepat, responsif, dan cocok untuk semua jenis bisnis.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🔍</div>
+          <h3>SEO Friendly</h3>
+          <p>
+            Website dioptimasi agar lebih mudah ditemukan di Google dan meningkatkan traffic.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">📱</div>
+          <h3>Mobile Responsive</h3>
+          <p>
+            Tampilan website tetap maksimal di HP, tablet, maupun desktop.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💰</div>
+          <h3>Harga Terjangkau</h3>
+          <p>
+            Cocok untuk UMKM, toko online, jasa, dan bisnis yang ingin go digital.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ULASAN -->
+  <section class="pricing">
+    <div class="container">
+      <div class="title">
+        <h2>Ulasan <span>Customer</span></h2>
+        <p>Beberapa review dari pelanggan CMD.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Rizky Digital Store</h3>
+          <p>
+            “Website sangat keren dan profesional. Penjualan jadi lebih meningkat setelah menggunakan layanan CMD.”
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Andi Motor</h3>
+          <p>
+            “Pelayanan cepat dan hasil website sangat memuaskan. Recommended!”
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon">⭐</div>
+          <h3>Toko Online Nusantara</h3>
+          <p>
+            “SEO dan landing page dari CMD membantu bisnis kami tampil lebih profesional.”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING WA -->
+  <a href="https://wa.me/6285773065313" class="floating-wa" target="_blank">
+    💬
+  </a>
+
+  <style>
+    .floating-wa{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      width:65px;
+      height:65px;
+      background:#25d366;
+      color:white;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+      z-index:9999;
+      animation:floatwa 2s infinite;
+    }
+
+    @keyframes floatwa{
+      0%{transform:scale(1);}
+      50%{transform:scale(1.1);}
+      100%{transform:scale(1);}
+    }
+  </style>
+
+</body>
+</html>
